@@ -48,7 +48,7 @@ if(numericFilters) {
 
     const regEx = /\b(<|>|<=|=|>=)\b/g;
     let filters = numericFilters.replace( regEx, (match) => {
-        `-${operatorMap[match]}-`
+        return `-${operatorMap[match]}-`
     } )
 
     const options = ["price", "rating"];
@@ -58,8 +58,6 @@ if(numericFilters) {
             queryObj[field] = { [operator]: Number(value) }
         }
     })
-
-    console.log(filters);
 }
 
 // remove the await to prevent find from returning final result.
